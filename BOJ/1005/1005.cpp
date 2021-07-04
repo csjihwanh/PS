@@ -13,9 +13,13 @@ int obj= 0;
 vector<pair<int,int> > onBuild, temp;
 	
 void initVar() {
+	onBuild.clear();
+	temp.clear();
+	
 	for(int i =0 ; i < maxN; i++) {
 		cnt[i]=0;
 		chk[i] = false;
+		cost[i] = 0;
 		for(int j = 0 ; j<maxN; j++) {
 			order[i][j] = false;
 		}
@@ -27,7 +31,6 @@ void scanVar() {
 	int temp1, temp2;
 	
 	scanf("%d %d", &n, &k);
-	initVar();
 		
 	for(int j = 1; j <= n; j++) {
 		scanf("%d", &cost[j]);
@@ -50,7 +53,6 @@ int findMinIndex() {
 			valueMin = onBuild[i].second;
 		}
 	}
-	if(minIndex==-1)printf("errorIndex\n");
 	return minIndex;
 }
 
@@ -61,6 +63,7 @@ void subMinTime(int minIndex) {
 		pair<int, int> tempPair = onBuild[i];
 		temp.push_back(tempPair);
 	}
+	onBuild.clear();
 	for(int i = 0; i < temp.size(); i++) {
 		if(i == minIndex) continue;
 		onBuild.push_back(make_pair(temp[i].first, temp[i].second - minTime));
@@ -73,6 +76,7 @@ void checkNewBuild(int index) {
 			cnt[i]--;
 			if(cnt[i] == 0 && chk[i] == false) {
 				onBuild.push_back(make_pair(i, cost[i]));
+				
 				chk[i] = true;
 			}
 		}
@@ -87,8 +91,9 @@ int main ( void ) {
 	
 	scanf("%d", &t);
 	for(int i = 0 ; i< t ; i++) {
+		initVar();
 		scanVar();
-		minIndex= -1;
+		minIndex= -1, minNum = -1;
 		sum =0;
 		
 		for(int j = 1; j <= n; j++) { //initializing
@@ -98,12 +103,9 @@ int main ( void ) {
 			}
 		}
 		
-		for(int j = 0; j < onBuild.size(); j++) {
-			printf("%d ", onBuild[j].first);
-		}
-		printf("\n");
 		
-		while(minIndex!= obj) {
+		
+		while(minNum!= obj) {
 			minIndex = findMinIndex();
 			minNum = onBuild[minIndex].first;
 			sum+= onBuild[minIndex].second;
