@@ -1,6 +1,5 @@
 #include <iostream>
 #include <algorithm>
-#include <stdlib.h>
 
 using namespace std;
 
@@ -30,14 +29,12 @@ long long int countRange(long long int left, long long int right) {
 		
 		if(rVal >= lVal && rLim >= lLim) cnt+=(rVal-lVal)/b[i]+1;
 		
-		//cout<<"cR "<<left<<" "<<right<<" i is "<<i<<" cnt is "<<cnt<<endl;
 	}
 	return cnt;
 }
 
 int main ( void ) {
 	
-	freopen("/workspace/PS_Git/BOJ/1637/input.txt","r",stdin);
 	long long int left=2147483648, right=0, mid;
 	
 	scanf("%d", &n);
