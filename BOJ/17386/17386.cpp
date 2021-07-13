@@ -70,10 +70,6 @@ int main (void) {
 }
 
 double calcGrad(double* x, double* y) {
-	for(int i =0; i <=1; i++) {
-		printf("calcGrad : x[%d] = %lf\n", i,x[i]);
-		printf("calcGrad : y[%d] = %lf\n", i,y[i]);
-	}
 	if(x[0] == x[1]) return INF;
 	else return (y[1]-y[0])/(x[1]-x[0]);
 }
@@ -85,15 +81,15 @@ int checkCross() {
 	alpha[1] = f1.getAlpha(); alpha[2] = f2.getAlpha();
 	beta[1] = f1.getBeta(); beta[2] = f2.getBeta();
 	
-	cout<<alpha[1]<<endl<<alpha[2]<<endl;
-	cout<<beta[1]<<endl<<beta[2]<<endl;
 	if(alpha[1] == alpha[2]) //parallel
 		return 0;
 	
 	crossX = (beta[2]-beta[1])/(alpha[2]-alpha[1]);
 	crossY = f1.getValue(crossX);
 	
-	if(crossX >=x[1] && crossX<=x[2]) return 1;
+	printf("%lf %lf\n", crossX, crossY);
+	
+	if(crossX >=x[1]-0.00001 && crossX<=x[2]+0.00001) return 1;
 	return 0;
 }
 
