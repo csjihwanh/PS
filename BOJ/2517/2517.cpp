@@ -28,7 +28,7 @@ void update(int left, int right, int node, int index) {
 	update(mid+1,right,node*2+1,index);
 }
 
-void coordContract(int n) {
+void coordCompress(int n) {
 	vector<int> tempVec;
 	map<int,int> contAbility;
 	
@@ -55,7 +55,7 @@ int main () {
 		cin>>temp;
 		player.push_back(temp);
 	}
-	coordContract(n);
+	coordCompress(n);
 	
 	for(int i =0; i<n; i++) {
 		cout<<i-query(1,n,1,1,player[i])+1<<'\n';
