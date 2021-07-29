@@ -10,7 +10,7 @@ using namespace std;
 
 const int maxN = 500500;
 vector<int> num={0};
-map<int,int> assign;
+int assign[1005000];
 vector<ll> tree(maxN*4);
 
 void update(int left, int right, int node, int index) {
@@ -40,7 +40,7 @@ int main(void) {
 	
 	for(int i = 1; i<=n; i++) {
 		cin>>temp;
-		assign.insert(make_pair(temp,i));
+		assign[temp]=i;
 	} 
 	for(int i = 1; i<=n; i++) {
 		cin>>temp;
