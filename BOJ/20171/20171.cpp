@@ -57,21 +57,6 @@ int main(void) {
 	visited[leastComplex]=1;
 	DFS(leastComplex);
 	
-	for(int i = 1; i <= n; i++) {
-		if(complex[i]==false)continue;
-		Edge worst;
-		worst.weight = MIN;
-		for(int j = 0 ; j<adj[i].size(); j++) {
-			if(adj[i][j].weight > worst.weight) {
-				worst.dest = adj[i][j].dest;
-				worst.weight = adj[i][j].weight;
-			}
-		}
-		for(int j = 0 ; j<adj[i].size() ; j++) {
-			if(adj[i][j].dest==worst.dest) continue;
-			good[adj[i][j].dest]=true;
-		}
-	}
 	
 	for(int i = 1; i <= n; i++) answer+=good[i];
 	cout<<answer<<'\n';
