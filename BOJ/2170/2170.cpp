@@ -5,13 +5,14 @@
 using namespace std;
 
 typedef long long int ll;
-vector<pair<int,int>> line;
+
 
 int main (void ) {
 	freopen("/workspace/PS_Git/BOJ/2170/input.txt", "r", stdin) ;
 	cin.tie(NULL);cout.tie(NULL);ios_base::sync_with_stdio(false);
 	
 	int n,temp1,temp2;
+	vector<pair<int,int>> line;
 	pair<int,int> cur;
 	ll sum = 0;
 
@@ -30,7 +31,6 @@ int main (void ) {
 			sum+= cur.second-cur.first;
 			cur=line[i];
 		}
-		cout<<cur.first<<" "<<cur.second<<endl;
 	}
 	sum+=cur.second-cur.first;
 	
