@@ -9,7 +9,6 @@ int minCnt = 987654321;
 vector<int>order(25);
 
 void move(int left, int right, int cnt, int idx) {
-	//cout<<"move:"<<left<<" "<<right<<" cnt:"<<cnt<<" idx:"<<idx<<" order:"<<order[idx]<<endl;
 	if(left==right) return;
 	if(idx > t) {
 		minCnt = min(minCnt, cnt); 
