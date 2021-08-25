@@ -7,7 +7,7 @@
 using namespace std;
 typedef long long int ll;
 typedef vector<vector<ll>> Matrix_s;
-const ll MOD = 1e6;
+const ll MOD = 1e9+7;
 
 Matrix_s matrixMulti(Matrix_s& a, Matrix_s& b) {
 	Matrix_s answer;
