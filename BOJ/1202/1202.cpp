@@ -53,12 +53,12 @@ int main(void) {
 	int bagIdx = 0;
 	for(int i = 0; i < k; i++) {
 		int curBag = bag[i];
-		if(bagIdx < item.size()-1) {
-			while(item[bagIdx].mass <= curBag) {
-				ableItem.push(item[bagIdx++]);
-			}
+		for( ; bagIdx < item.size(); ) {
+			if(item[bagIdx].mass <= curBag) ableItem.push(item[bagIdx++]);
+			else break;
 		}
 		
+		if(ableItem.size() <=0 ) continue;
 		ITEM_S maxItem = ableItem.top();
 		answer+= maxItem.value;
 		ableItem.pop();
