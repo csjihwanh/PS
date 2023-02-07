@@ -30,18 +30,12 @@ int Root(int a) {
 void Union(int a, int b) {
     int root_a = Root(a);
     int root_b = Root(b);
-    parent[root_b] = root_a;
     parent[b] = root_a;
+    
+    if(root_a == root_b) return;
+    parent[root_b] = root_a;
     friends[root_a] += friends[root_b];
 }
-/*
-int findNetwork(int root) {
-    int cnt = 0;
-    for(int i = 1; i<= parent.size(); i++) {
-        if(Root(i) == root) cnt++;
-    }
-    return cnt;
-}*/
 
 int main(void) {
     freopen("input.txt", "r", stdin);
