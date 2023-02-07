@@ -9,6 +9,7 @@ using namespace std;
 map<string, int> name;
 int nameCnt = 0;
 vector<int> parent;
+vector<int> friends;
 
 int nameMap(string myName) {
     if( name.count(myName) > 0 ) 
@@ -16,6 +17,7 @@ int nameMap(string myName) {
     else {
         name.insert(make_pair(myName, nameCnt));
         parent.emplace_back(nameCnt);
+        friends.emplace_back(1);
         return nameCnt++;
     }
 }
@@ -30,15 +32,16 @@ void Union(int a, int b) {
     int root_b = Root(b);
     parent[root_b] = root_a;
     parent[b] = root_a;
+    friends[root_a] += friends[root_b];
 }
-
+/*
 int findNetwork(int root) {
     int cnt = 0;
     for(int i = 1; i<= parent.size(); i++) {
         if(Root(i) == root) cnt++;
     }
     return cnt;
-}
+}*/
 
 int main(void) {
     freopen("input.txt", "r", stdin);
@@ -55,6 +58,7 @@ int main(void) {
         cin>>f;
         name.clear();
         parent.clear();
+        friends.clear();
         nameCnt=0;
         for(int j = 1; j <= f; j++) {
 
@@ -63,7 +67,7 @@ int main(void) {
             name2 = nameMap(namestr2);
 
             Union(name1, name2); 
-            cout<< findNetwork(Root(name1))<<'\n';
+            cout<< friends[Root(name1)]<<'\n';
         }
     }
     return 0;
